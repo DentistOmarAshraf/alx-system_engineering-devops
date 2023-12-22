@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# This script displaying (ls) of cur dir
+
+for i in *
+do
+	echo "$i"
+done
