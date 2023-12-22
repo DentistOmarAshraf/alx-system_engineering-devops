@@ -5,10 +5,6 @@ hrs=0
 while [ $hrs -le 12 ]
 do
 	echo Hours: $hrs
-	if [ $hrs == 12 ]
-	then
-		break
-	fi
 	min=1
 	while [ $min -le 59 ]
 	do
