@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Bash script shoe curruent running proccess
 
-ps -ef --forest
+ps -Af --forest
