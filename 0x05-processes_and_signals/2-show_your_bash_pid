@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Bash script shoe curruent running proccess
+# shellcheck disable=SC2009
+ps -auxf | grep bash
