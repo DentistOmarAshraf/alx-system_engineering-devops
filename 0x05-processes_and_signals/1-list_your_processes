@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 # Bash script shoe curruent running proccess
-ps -Af --forest
+ps -auxf
