@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# scritp to show the lestining ports
+netstat -l
