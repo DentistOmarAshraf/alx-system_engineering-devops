@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Update apt and install nginx
+
+apt update -y
+apt install nginx -y
+
+echo "Hello World!" | tee /var/www/html/index.nginx-debian.html
+
+to_rep="server_name _;"
+rep="\n\n\tlocation /redierct_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}"
+
+sed -i "s|${to_rep}|${to_rep}${rep}|" /etc/nginx/sites-available/default
+
+systemctl restart nginx
+
+service nginx start
