@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Update apt and install nginx
+
+apt update -y
+apt install nginx -y
+
+echo "Hello World!" | tee /var/www/html/index.nginx-debian.html
+echo "Ceci n'est pas une page" | tee /var/www/html/404.html
+
+
+to_rep="server_name _;"
+rep="\n\n\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}"
+err="\n\terror_page 404 /404.html;"
+err2="\n\tlocation = /404.html {\n\troot /var/www/html/;\n\tinternal;\n\t}"
+
+sed -i "s|${to_rep}|${to_rep}${rep}|" /etc/nginx/sites-available/default
+sed -i "s|${to_rep}|${to_rep}${err2}|" /etc/nginx/sites-available/default
+sed -i "s|${to_rep}|${to_rep}${err}|" /etc/nginx/sites-available/default
+
+service nginx restart
