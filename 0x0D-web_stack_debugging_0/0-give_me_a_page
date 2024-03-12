@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 # command to start apache2 serveices inside docker container
-sudo docker exec -i 47ca3994a491 sh -c "service apache2 start"
+service apache2 start
