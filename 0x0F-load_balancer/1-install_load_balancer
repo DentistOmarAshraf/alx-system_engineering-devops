@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Install haproxy and put the configuration
+
+apt update -y
+apt install haprox -y
+
+cmd1="\n\nfrontend my_front\n\tbind *:80\n\tdefault_backend my_back\n"
+cmd2="\nbackend my_back\n\tbalance roundrobin"
+cmd3="\n\tserver web01 52.201.221.202:80 check"
+cmd4="\n\tserver web02 54.174.40.159:80 check"
+
+echo -e "$cmd1$cmd2$cmd3$cmd4">>/etc/haproxy/haproxy.cfg
