@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Adding Custom header to server
+
+to_rep="\tlocation / {"
+rep="${to_rep}\n\t\tadd_header X-Served-By \"$(hostname)\";"
+
+sed -i "s|${to_rep}|${rep}|" /etc/nginx/sites-available/default
+
+service nginx restart
