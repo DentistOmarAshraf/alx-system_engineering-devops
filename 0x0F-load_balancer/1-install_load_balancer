@@ -10,3 +10,5 @@ cmd3="\n\tserver web01 52.201.221.202:80 check"
 cmd4="\n\tserver web02 54.174.40.159:80 check"
 
 echo -e "$cmd1$cmd2$cmd3$cmd4">>/etc/haproxy/haproxy.cfg
+
+service restart haproxy
