@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # Adding Custom header to server
 
+apt update -y
+apt install nginx -y
+
 to_rep="\tserver_name _;"
 rep="${to_rep}\n\tadd_header X-Served-By \"$(hostname)\";"
 
