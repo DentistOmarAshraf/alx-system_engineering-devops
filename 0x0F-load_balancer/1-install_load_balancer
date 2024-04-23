@@ -2,7 +2,7 @@
 # Install haproxy and put the configuration
 
 apt update -y
-apt install haprox -y
+apt install haproxy -y
 
 cmd1="\n\nfrontend my_front\n\tbind *:80\n\tdefault_backend my_back\n"
 cmd2="\nbackend my_back\n\tbalance roundrobin"
