@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # This script to fix server in (webstack_debug_01)
-service nginx stop >/dev/null 2>&1
-apt install apache2 -y >/dev/null 2>&1
-service apache2 start >/dev/null 2>&1
+apt update -y >/dev/null 2>&1
+apt install nginx -y >/dev/null 2>&1
+service nginx start >/dev/null 2>&1
