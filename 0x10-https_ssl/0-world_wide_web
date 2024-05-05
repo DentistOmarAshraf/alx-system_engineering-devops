@@ -17,7 +17,7 @@ show_info(){
 		ip="$(echo "${res}" | awk '{print $8}')"
 		rec="$(echo "${res}" | awk '{print $7}')"
 		echo "The subdomain www is a ${rec} record and points to ${ip}"
-		res="$(dig Ib-01."${link}" | grep -A1 'ANSWER SECTION:' | tr '\n' ' ')"
+		res="$(dig ib-01."${link}" | grep -A1 'ANSWER SECTION:' | tr '\n' ' ')"
 		ip="$(echo "${res}" | awk '{print $8}')"
 		rec="$(echo "${res}" | awk '{print $7}')"
 		echo "The subdomain Ib-01 is a ${rec} record and points to ${ip}"
