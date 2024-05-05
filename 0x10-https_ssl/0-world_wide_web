@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Script to show information about domain
+
+
+show_info(){
+	local link=$1
+	local pattern="^[^.]+\.[^.]+\.[^.]+$"
+
+	if [[ $link =~ $pattern ]]; then
+		res="$(dig "${link}" | grep -A1 'ANSWER SECTION:' | tr '\n' ' ')"
+		ip="$(echo "${res}" | awk '{print $8}')"
+		rec="$(echo "${res}" | awk '{print $7}')"
+		IFS='.' read -r -a dom <<< "$link"
+		echo "The subdomain ${dom[0]} is a ${rec} record and points to ${ip}"
+	else
+		res="$(dig www."${link}" | grep -A1 'ANSWER SECTION:' | tr '\n' ' ')"
+		ip="$(echo "${res}" | awk '{print $8}')"
+		rec="$(echo "${res}" | awk '{print $7}')"
+		echo "The subdomain www is a ${rec} record and points to ${ip}"
+		res="$(dig Ib-01."${link}" | grep -A1 'ANSWER SECTION:' | tr '\n' ' ')"
+		ip="$(echo "${res}" | awk '{print $8}')"
+		rec="$(echo "${res}" | awk '{print $7}')"
+		echo "The subdomain Ib-01 is a ${rec} record and points to ${ip}"
+		res="$(dig web-01."${link}" | grep -A1 'ANSWER SECTION:' | tr '\n' ' ')"
+		ip="$(echo "${res}" | awk '{print $8}')"
+		rec="$(echo "${res}" | awk '{print $7}')"
+		echo "The subdomain web-01 is a ${rec} record and points to ${ip}"
+		res="$(dig web-02."${link}" | grep -A1 'ANSWER SECTION:' | tr '\n' ' ')"
+		ip="$(echo "${res}" | awk '{print $8}')"
+		rec="$(echo "${res}" | awk '{print $7}')"
+		echo "The subdomain web-02 is a ${rec} record and points to ${ip}"
+
+	fi
+}
+
+show_info "$1"
