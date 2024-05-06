@@ -2,4 +2,4 @@
 # This script to fix server in (webstack_debug_01)
 apt update -y
 apt install nginx -y
-service nginx start
+service nginx restart
