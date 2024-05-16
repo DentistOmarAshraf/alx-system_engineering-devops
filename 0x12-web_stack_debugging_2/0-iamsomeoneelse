@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
 #run command under at spacific user
 
-su "$1" -c whoami
+if [ "$1" ];
+then
+	su "$1" -c whoami
+fi
