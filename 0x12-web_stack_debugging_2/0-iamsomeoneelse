@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #run command under at spacific user
 
-if grep -q "^$1:" /etc/passwd;
+if [ $# -eq 1 ];
 then
 	su "$1" -c whoami
 fi
