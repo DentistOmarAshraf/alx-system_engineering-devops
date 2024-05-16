@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#run command under at spacific user
+
+su "$1" -c whoami
