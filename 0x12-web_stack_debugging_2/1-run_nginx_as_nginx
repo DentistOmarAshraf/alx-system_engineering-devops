@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #runing nginx with nginx user (lower preivilige)
-sudo kill $(ps aux | grep "apache2" | awk '$1 ~/root/ && $11 ~/usr/ {print $2}')
+sudo kill "$(pgrep -u root apache2)"
 chown nginx:nginx /etc/nginx/nginx.conf
 chmod 644 /etc/nginx/nginx.conf
 sed -i "s|80|8080|" /etc/nginx/sites-available/default
