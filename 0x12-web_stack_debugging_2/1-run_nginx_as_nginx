@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 #runing nginx with nginx user (lower preivilige)
-service nginx stop
+sudo kill $(ps aux | grep "apache2" | awk '$1 ~/root/ && $11 ~/usr/ {print $2}')
 chown nginx:nginx /etc/nginx/nginx.conf
 chmod 644 /etc/nginx/nginx.conf
+sed -i "s|80|8080|" /etc/nginx/sites-available/default
 sed -i "2i user nginx;" /etc/nginx/nginx.conf
 sudo -u nginx service nginx start
