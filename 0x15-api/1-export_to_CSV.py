@@ -34,7 +34,7 @@ if __name__ == "__main__":
         new_arr.append(x["title"])
         arr.append(new_arr)
 
-    with open("USER_ID.csv", "w+") as f:
+    with open(f"{user_all_task[0]['userId']}.csv", "w+") as f:
         writer = csv.writer(f, delimiter=",",
                             quotechar='"', quoting=csv.QUOTE_ALL)
         for x in arr:
