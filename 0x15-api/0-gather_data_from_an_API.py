@@ -29,7 +29,7 @@ if __name__ == "__main__":
         if x["completed"]:
             completed.append(x["title"])
 
-    print("Employee {} is done with tasks ({}/{}):"
+    print("Employee {} is done with tasks({}/{}):"
           .format(user_name, len(completed), len(user_all_task)))
 
     for x in completed:
