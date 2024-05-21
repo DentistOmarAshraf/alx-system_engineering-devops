@@ -3,8 +3,8 @@
 gather info from api using requests module
 """
 
-import os
 import json
+import os
 import requests
 import sys
 
