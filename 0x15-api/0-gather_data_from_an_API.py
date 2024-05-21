@@ -33,4 +33,4 @@ if __name__ == "__main__":
           .format(user_name, len(completed), len(user_all_task)))
 
     for x in completed:
-        print("     {}".format(x))
+        print("\t {}".format(x))
