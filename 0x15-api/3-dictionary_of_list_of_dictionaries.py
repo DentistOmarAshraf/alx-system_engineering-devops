@@ -17,7 +17,6 @@ if __name__ == "__main__":
             "https://jsonplaceholder.typicode.com/users")
 
     user_all = res_user.json()
-    user_name = user_all[0]["username"]
 
     all_tog = {}
     for x in user_all:
@@ -27,6 +26,7 @@ if __name__ == "__main__":
         user_todo = res_todo.json()
 
         arr = []
+        user_name = x["username"]
         for y in user_todo:
             dic = {}
             dic["username"] = user_name
