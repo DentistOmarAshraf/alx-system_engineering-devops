@@ -3,7 +3,7 @@
 gather info from api using requests module
 """
 
-import csv
+import json
 import requests
 import sys
 
@@ -27,15 +27,14 @@ if __name__ == "__main__":
 
     arr = []
     for x in user_all_task:
-        new_arr = []
-        new_arr.append(x["userId"])
-        new_arr.append(user_name)
-        new_arr.append(str(x["completed"]))
-        new_arr.append(x["title"])
-        arr.append(new_arr)
+        new_dic = {}
+        new_dic["task"] = x["title"]
+        new_dic["completed"] = x["completed"]
+        new_dic["username"] = user_name
+        arr.append(new_dic)
 
-    with open(f"{user_all_task[0]['userId']}.csv", "w+") as f:
-        writer = csv.writer(f, delimiter=",",
-                            quotechar='"', quoting=csv.QUOTE_ALL)
-        for x in arr:
-            writer.writerow(x)
+    all_tog = {}
+    all_tog[f"{user_all_task[0]['userId']}"] = arr
+
+    with open(f"{user_all_task[0]['userId']}.json", "w+") as f:
+        json.dump(all_tog, f, indent=4)
