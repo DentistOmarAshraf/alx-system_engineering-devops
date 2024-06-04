@@ -7,10 +7,11 @@ import requests
 
 def number_of_subscribers(subreddit):
     """Funciton to fetch reddit API subscribers"""
-    head = {"User-agent": "Chrome/51.0.2704.103"}
-    res = requests.get(f"https://www.reddit.com/r/{subreddit}/about/.json",
-                       allow_redirects=False, headers=head)
+    res = requests.get("https://www.reddit.com/r/{}/about/.json"
+                       .format(subreddit),
+                       allow_redirects=False,
+                       headers={"User-Agent": "My-Agent"})
     if res.status_code == 200:
-        return res.json()["data"]["subscribers"]
+        return int(res.json()["data"]["subscribers"])
     else:
         return 0
