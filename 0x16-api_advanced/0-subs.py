@@ -6,22 +6,8 @@ import sys
 
 
 def number_of_subscribers(subreddit):
-    """Funciton to fetch reddit API subscribers"""
-
-    res = requests.get("https://www.reddit.com/r/{}/about/.json"
-                       .format(subreddit),
+    res = requests.get(f"https://www.reddit.com/r/{subreddit}/about/.json",
                        allow_redirects=False)
-
     if res.status_code == 200:
         return int(res.json()["data"]["subscribers"])
-
-    else:
-        return 0
-
-
-if __name__ == "__main__":
-    """Using number_of_subscribers"""
-    if len(sys.argv) < 2:
-        print("Please pass an argument for the subreddit to search.")
-    else:
-        number_of_subscribers(sys.argv[1])
+    return 0
