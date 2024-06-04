@@ -12,7 +12,7 @@ def recurse(subreddit, hot_list=[]):
         to_ret = []
         for item in hot_list:
             to_ret = to_ret + item["children"]
-        return to_ret
+        return list(set(to_ret))
 
     if len(hot_list) > 0:
         url = "https://www.reddit.com/r/{}/hot/.json?limit=10&after={}"
