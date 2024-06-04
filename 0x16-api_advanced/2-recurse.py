@@ -16,10 +16,9 @@ def recurse(subreddit, hot_list=[]):
         return to_ret
 
     if len(hot_list) > 0:
-        res = requests.get(
-                    "https://www.reddit.com/r/{}/hot/.json?limit=10&after={}"
-                    .format(subreddit, hot_list[-1]["after"]),
-                    allow_redirects=False)
+        url = "https://www.reddit.com/r/{}/hot/.json?limit=10&after={}"
+        res = requests.get(url.format(subreddit, hot_list[-1]["after"]),
+                           allow_redirects=False)
 
     else:
         res = requests.get("https://www.reddit.com/r/{}/hot/.json?limit=10"
