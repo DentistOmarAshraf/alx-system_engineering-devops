@@ -9,7 +9,6 @@ import requests
 def recurse(subreddit, hot_list=[]):
 
     if len(hot_list) > 0 and hot_list[-1]["after"] is None:
-        print("hot_list after {}".format(hot_list[-1]["after"]))
         to_ret = []
         for item in hot_list:
             to_ret = to_ret + item["children"]
