@@ -9,7 +9,6 @@ import requests
 def number_of_subscribers(subreddit):
     """Funciton to fetch reddit API subscribers"""
 
-
     res = requests.get("https://www.reddit.com/r/{}/about/.json"
                        .format(subreddit),
                        allow_redirects=False,
