@@ -7,7 +7,7 @@ import requests
 
 
 def recurse(subreddit, hot_list=[]):
-"""Function to fetch all hot topics"""
+    """Function to fetch all hot topics"""
     if len(hot_list) > 0 and hot_list[-1]["after"] is None:
         to_ret = []
         for item in hot_list:
