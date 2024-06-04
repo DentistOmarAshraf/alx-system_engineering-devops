@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """function to fetch Reddit API subscribers"""
 
 import requests
