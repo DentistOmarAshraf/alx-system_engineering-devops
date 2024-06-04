@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""
-Fetch ReditAPI
-"""
+"""function to fetch Reddit API subscribers"""
 
 import requests
 
