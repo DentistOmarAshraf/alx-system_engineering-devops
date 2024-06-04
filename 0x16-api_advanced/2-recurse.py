@@ -7,12 +7,12 @@ import requests
 
 
 def recurse(subreddit, hot_list=[]):
-
+"""Function to fetch all hot topics"""
     if len(hot_list) > 0 and hot_list[-1]["after"] is None:
         to_ret = []
         for item in hot_list:
             to_ret = to_ret + item["children"]
-        return list(set(to_ret))
+        return to_ret
 
     if len(hot_list) > 0:
         url = "https://www.reddit.com/r/{}/hot/.json?limit=10&after={}"
