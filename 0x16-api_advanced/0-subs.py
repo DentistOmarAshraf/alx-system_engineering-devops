@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """function to fetch Reddit API subscribers"""
 
 import requests
@@ -9,8 +9,7 @@ def number_of_subscribers(subreddit):
 
     res = requests.get("https://www.reddit.com/r/{}/about/.json"
                        .format(subreddit),
-                       allow_redirects=False,
-                       headers={"User-Agent": "My-Agent"})
+                       allow_redirects=False)
 
     if res.status_code == 200:
         return int(res.json()["data"]["subscribers"])
