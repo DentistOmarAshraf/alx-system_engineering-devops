@@ -6,29 +6,25 @@ Recursive Fetch from api
 import requests
 
 
-def recurse(subreddit, hot_list=[]):
-    """Function to fetch all hot topics"""
-    if len(hot_list) > 0 and hot_list[-1]["after"] is None:
-        to_ret = []
-        for item in hot_list:
-            to_ret = to_ret + item["children"]
-        return to_ret
-
-    if len(hot_list) > 0:
-        url = "https://www.reddit.com/r/{}/hot/.json?limit=10&after={}"
-        res = requests.get(url.format(subreddit, hot_list[-1]["after"]),
-                           allow_redirects=False)
+def recurse(subreddit, hot_list=[], after=""):
+    """ Function to Fetch all hot titles"""
+    if after is None or after == "":
+        url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
 
     else:
-        res = requests.get("https://www.reddit.com/r/{}/hot/.json?limit=10"
-                           .format(subreddit),
-                           allow_redirects=False)
-    dt = {}
-    if res.status_code == 200:
-        dt["after"] = res.json()["data"]["after"]
-        dt["children"] = []
-        for title in res.json()["data"]["children"]:
-            dt["children"].append(title["data"]["title"])
-        hot_list.append(dt)
+        url = f"https://www.reddit.com/r/{subreddit}/hot/.json?after={after}"
 
-    return recurse(subreddit, hot_list)
+    head = {"User-agent": "My-agent"}
+    res = requests.get(url, allow_redirects=False, headers=head)
+    if res.status_code != 200:
+        return None
+
+    next_page = res.json().get("data").get("after")
+    topic_info = res.json().get("data").get("children")
+    for topic in topic_info:
+        hot_list.append(topic.get("data").get("title"))
+
+    if next_page is None:
+        return hot_list
+
+    return recurse(subreddit, hot_list, next_page)

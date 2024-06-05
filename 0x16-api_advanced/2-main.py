@@ -13,7 +13,5 @@ if __name__ == '__main__':
         if result is not None:
             print(len(result))
             print(len(set(result)))
-            for x in result:
-                print(x)
         else:
             print("HERE None")
